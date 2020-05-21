@@ -1,0 +1,92 @@
+% lollipop-manual.tex master file for the Lollipop TeX manual.
+% this file and all input files for it copyright 1992 Victor Eijkhout,
+%                                                 copyright 2014--2016 Vafa Khalighi,
+% except where indicated otherwise.
+%
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%
+\tracingstats=1
+\makeatletter
+\makeatother
+\showboxdepth=-1
+
+\input comment
+% By shuffling the \comment line you can load different fonts.
+% This is machine dependent, so by default you get the CM font,
+% which should work everywhere.
+%
+\def\SerifFace{\TypeFace:ComputerModern }
+\def\SansFace{\TypeFace:ComputerSans }
+
+
+% Now load the style definition. This takes some time.
+\input mandefs
+
+% Prevent regeneration of external files; change 'yes' into 'no'
+% if you are changing page dimensions or so.
+\WriteExtern:yes
+
+% BibTeX interface by Berry and Patashnik
+\input btxmac
+
+% Start formating
+\Start
+
+% Include the next line if you are formatting the second half
+% of this manual:
+%\comment
+
+\CounterRepresentation:Page=i \RightPage
+\InputFile:titlepag
+
+\InputFile:prelim
+\SetCounter:LastInPage=PageValue
+\BackStepCounter:LastInPage
+
+\ToRecto\RightPage
+\CounterRepresentation:Page=1 \SetCounter:Page=1
+
+\InputFile:struct
+
+\InputFile:head
+
+\InputFile:list
+
+% For the first half include the following line:
+%\Stop
+% For second half include the following lines:
+%\endcomment
+%\RightPage \SetCounter:Page=11
+
+\InputFile:out
+
+\InputFile:extern
+
+\InputFile:opt
+
+\InputFile:comm
+
+\InputFile:trace
+
+\InputFile:appendix
+
+\SetCounter:LastRegPage=PageValue
+\BackStepCounter:LastRegPage
+\Stop
+
+% 2016/04/09  Updated the manual
+% 92/11/20 Total pages counter
+% 93/01/08 \comment and such for two part processing

@@ -1,0 +1,327 @@
+% prelim.tex copyright 1992 Victor Eijkhout
+%                  copyright 2014--2016 Vafa Khalighi
+%
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%
+\Chapter[chap:prelim] Preliminaries
+
+\Section What is Lollipop?
+
+Lollipop is `\TeX\ made easy'. Lollipop is a macro package
+that functions as a toolbox for writing \TeX\ macros. It was my
+intention to make macro writing so easy that implementing a fully new
+layout in \TeX\ would become a matter of less than an hour for an
+average document, and that it would be a task that could be
+accomplished by someone with only a very basic training in \TeX\
+programming.
+
+Lollipop is an attempt to make structured text formatting available
+for environments where previously only wysiwyg packages could be used
+because adapting the layout is so much more easy with them than with
+traditional \TeX\ macro packages.
+
+\Section But is it compatible?
+
+Lollipop, like \LaTeX, is not compatible with plain \TeX. I~don't
+consider this a real problem. Most plain \TeX\ commands will work in
+\Lollipop\ with the exception of anything output routine related.
+(See also below.)
+
+\Lollipop\ is also not compatible with \LaTeX, although it has a lot
+of the same functionality. There are two reasons why \Lollipop\ still
+has a reason for existing, even though \LaTeX\ is used pretty much
+all over the scientific world.
+
+For one, Lollipop is targeted in part
+to different users than the typical plain \TeX\ or
+\LaTeX\ user. For another, I~have a vain hope that I~can capture some
+of the \LaTeX\ market share. Since developing styles in \Lollipop\ is
+so much more easier than in \LaTeX, I~may stand a fighting chance.
+
+\SubSection \Lollipop\ and plain \TeX
+
+Having said the above, I'll conceded that \Lollipop\ is more
+compatible with plain \TeX\ than with \LaTeX. You can use quite some
+plain \TeX\ commands in \Lollipop. However, stay away from the
+following:\Description\item \cs{everypar}
+This one is heavily used by \Lollipop. You may use \cs{EveryParagraph}
+instead, which functions pretty much like \cs{everypar}; see
+section~\ref[sec:everypar].\item \cs{everymath}
+This one is heavily used by \Lollipop. You may use \cs{EveryMath}
+instead, which functions pretty much like \cs{everymath}; see
+section~\ref[sec:everymath].\item \cs{everydisplay}
+This one is heavily used by \Lollipop. You may use \cs{EveryDisplay}
+instead, which functions pretty much like \cs{everydisplay}; see
+section~\ref[sec:everydisplay].\item \cs{output}
+Page output is done so very differently from plain \TeX\ that all
+commands pertaining to page numbers and head/footlines have been
+eradicated. (Well, \cs{pageno} still gives the page number.) See
+chapter~\ref[chap:output].
+ \>
+
+The current version of \Lollipop\ is based on the plain \TeX\ file
+that comes with \TeX\ version~3.141592653.
+
+\SubSection \Lollipop\ and \TeX\ programming
+
+The tools in \Lollipop\ allow you to program in a simple manner quite
+complicated macros. Still you may want to have some knowledge of
+ordinary \TeX\ macro programming. If you are just starting in \TeX\
+you can pick up the basics from the book by Seroul and
+Levy~\bibref[SeLe:book], 
+and after that there is the book by
+the original author of \TeX~\bibref[Kn:book] and my own \TeX\
+reference guide~\bibref[E:book].
+
+ \Section How to Use \Lollipop
+
+The following files comprise the Lollipop format:
+\Ver>
+    lollipop-define.tex            lollipop-document.tex        
+    lollipop-float.tex             lollipop-fontdefs.tex
+    lollipop-fonts.tex             lollipop-heading.tex
+    lollipop-lists.tex             lollipop-output.tex
+    lollipop-plain.tex             lollipop-text.tex
+    lollipop-tools.tex             lollipop.tex<Rev
+
+
+To process a file, say \file{test.tex}, with
+Lollipop you then type:
+
+\Ver>
+> lollipop test.tex <Rev
+
+to get the dvi output.
+
+
+\Section[sec:style-dump] Processing a Lollipop file
+
+Files that you make to be processed with Lollipop contain of course
+the input text, but they also have to contain the design macros that
+determine the layout. There are two possibilities for these design
+macros:
+
+\Itemize
+\item You can simply put them in the same file, either in the
+beginning or wherever they are first needed, or
+\item You can put the layout definition in a separate file and call this
+definition file in your main file. For instance, you can put the layout definition of a
+book in a file \file{bookstyle.tex}, and then call this definition file  in your
+main Lollipop file by putting 
+
+\Ver>
+\InputLollipop:bookstyle.tex <Rev
+
+somewhere in your main Lollipop file.
+
+
+
+If you have used \TeX\ before, you will notice that the page numbers
+get reported slightly differently from the usual way. See
+section~\ref[sec:page-counter] for the explanation.
+
+\Section The errors of \Lollipop / known bugs
+
+Since \Lollipop\ is an order of magnitude more powerful
+(and hence complicated) than formats such as \LaTeX, its error
+messages can also be an order of magnitude more cryptic (see
+section~\ref[sec:error-msg] for the possible origin of some of the
+more obscure error messages). 
+
+Fortunately, \Lollipop\ is also quite a
+bit better than existing formats at catching potential errors. Typos
+in a style definition will usually lead to warning messages, and also
+during run time \Lollipop\ is able to track down ommisions.
+
+In addition, you can switch on various trace modes to get more
+detailed information about \Lollipop's thought processes. See
+chapter~\ref[chap:tracing].
+
+These are the known bugs in \Lollipop\ at the moment.
+
+\Enumerate\item Local references have been insufficiently tested,
+and the code definitely is buggy.
+\item The `firstpage' test in the page grids does not work.
+\item The table of contents example is slightly wrong.
+\item Titles get written to the aux file with double spaces.
+This shouldn't cause any problem, but it has to be fixed.
+\item Rules in page grids get white space around them.
+\item External items shouldn't declare \cs{FooTitle} or 
+\cs{FooCounter}.
+\item \cs{ToExternalFile} doesn't work.
+\> 
+
+ 
+If you find any other issues, or if you have any fixes/workarounds
+for any existing issues, then please post them on GitHub.
+
+\Section About this manual
+
+This manual consists of a main file \file{lollipop-manual.tex}, and the
+following input files:
+\Ver>
+titlepag.tex prelim.tex struct.tex head.tex list.tex
+out.tex extern.tex opt.tex comm.tex trace.tex appendix.tex<Rev
+and the style definition file \file{mandefs.tex}.
+
+In addition, you need \file{comment.tex} which is used to format this
+manual, and \file{btxmac.tex} for the Bib\TeX\ interface, but these
+are not really a part of \Lollipop.
+
+If you format this manual (which you'll have to do three times
+to get the page numbering and the table of contents straight) you'll
+notice something strange. The file \file{example.tex} is read in
+many, many times. This is because this manual formats its examples
+along the way, first writing them out, and then reading them in to
+show both their code and their output. This way it is guaranteed that
+the examples in the manual will always work.
+
+As a result of formatting this manual you will wind up with, apart
+from the usual \file{pdf} and \file{log} file, with \file{lollipop-manual} files
+with extensions \file{aux}, \file{toc}, and \file{imp}; 
+\file{oix} and \file{cix} for indexes of options and commands,
+and
+\file{tct}, file{tix} which are for the examples. For the
+bibliography there are the Bib\TeX\ input file \file{lollipop-manual.bib} and
+output file \file{lollipop-manual.bbl}.
+
+This manual needs quite some resources: here's what \TeX\ told me
+it needed.
+\Ver>Here is how much of TeX's memory you used:
+ 1194 strings out of 496579
+ 16173 string characters out of 6202690
+ 72655 words of memory out of 5000000
+ 3270 multiletter control sequences out of 15000+600000
+ 11241 words of font info for 40 fonts, out of 8000000 for 9000
+ 19 hyphenation exceptions out of 8191
+ 24i,4n,24p,187b,562s stack positions out of 5000i,500n,10000p,200000b,80000s<Rev
+
+
+Because of all the examples this manual takes quite some time to
+process. A~factor of four over the time for a regular document of
+similar length should be expected. Ordinary Lollipop documents will
+proceed far faster.
+
+\Section The most boring section in this manual
+
+There are a few things about \Lollipop\ that I~want to be clear about.
+
+\SubSection I am going to hurt you and I am not sorry
+
+In the secret handbook for the software industry it says that the
+final test phase of a product consists of putting it in stores and
+having innocent suckers pay good money for it. (You guessed it, this
+is the disclaimer section.) So let me just say that 
+\Lollipop\ is probably good for nothing, at least, I~don't claim it
+is. And if you hurt yourself by using it, don't blame me. I~warned
+you.
+
+\SubSection Get a \Lollipop, give one away
+
+\Lollipop\ is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+The easiest way to get the current copy of \Lollipop\ is to use
+a more recent \TeX{} distribution (\TeX Live or Mik\TeX).
+
+\SubSection The status of \Lollipop
+
+\Lollipop\ is still under development. Although I~will try not to
+make any drastic changes in the user interface (this says nothing
+about the internals!) I~really cannot guarantee anything.
+However, I~do listen to complaints and suggestions. 
+
+If you have suggestions or complaints about the
+useability of \Lollipop\ or the implementation, feel free to contact
+me at \n{persian-tex@tug.org} on the Internet. 
+
+\SubSection[sec:wish:list] The wish list
+
+\Lollipop\ is not quite perfect. Here's a list of things that I~am
+going to be adding in the near future. If you want to add items to
+this list, just open a ticket on the tickets.
+
+\Enumerate\item Raggedbottom should really, really be added. Soon!
+
+\item Capitalization and initial capping of titles. If a
+title appears in mixed case, it should be possible to have it in all
+uppercase in running heads. Some code has been disabled now.
+
+\item A better multi-column mode.
+
+\item Interface to Bib\TeX\ seems to largely in place; what happens
+if you don't load btxmac?
+
+\item Inserts, in particular footnotes. At the moment floating
+figures are entirely lacking. (As a matter of fact, the plain \TeX\
+macros are availble, but I'm not telling that.)
+
+\item A `nomarks' option to prevent wasting two token lists.
+Maybe other recourse saving optio for the expert designer?
+
+\item More sophisticated white space right before and after
+page breaks. (Use at least so and so much.)
+
+\item Dynamic topskip.
+
+\item Sup­port for RTL lan­guages (such as Per­sian).
+
+
+{\PopIndentLevel\Indent:no The following points are debatable:
+maybe I~should just steal a few components from \LaTeX. Maybe this
+sort of stuff does not belong in \Lollipop.\par}
+
+\item A tabular mode. Personally I~always felt \cs{halign} to be more
+than sufficient, but some people seem to think otherwise.
+
+\item Maths constructs. Some things in the \cs{eqalign} vein would be
+nice.
+
+\>
+
+\SubSection A bit of history
+
+The \Lollipop\ format was begun in late 1989 to typeset Victor Eijkhout's Ph.D.
+thesis, `{\Style:italic Vectorizable and Parallelizable
+Preconditioners for the Conjugate Gradient Method}'. At that time 
+Victor~was using \TeX\ on an Atari 1040ST.
+Loading the style definition for the thesis took about two minutes.
+\Lollipop\ was heavily augmented in late 1991 to typeset his book
+`{\Style:italic \TeX\ by Topic}', for which he~used Sun~3 and Sun~4
+computers. Writing this manual brought \Lollipop\ to its version 0.96; the first public release (version~0.9) was announced on the
+internet in October 1992. 
+
+Between 1992 and 2014, Lollipop was unmaintained and Vafa Khalighi took over the
+development of Lollipop in April 2014.
+
+The name `\n{Lollipop}' refers to a quote by Alan
+Perlis~\bibref[Pe:epigrams], quoted on page 365 of the \TeX
+book~\bibref[Kn:book]. In a way it's rather pretentious. The philosophy
+of the \n{Lollipop} format is described~\bibref[EL:Cork,E:Portland].
+
+\endinput
+
+% 2014/04/13 Added some notes about \EveryMath,
+% and \EveryDisplay. Also \EveryPar changed to
+% \EveryParagraph
+% 2014/04/12 Added note about xelollipop format
+% 2014/04/11 Updated the manual
+% 92/10/22 historical remark about name added
+% 92/11/03 section 'Lollipop and plain TeX' added;
+%          remarks about IniTeX in Textures
+% 92/11/26 uses bibrefs

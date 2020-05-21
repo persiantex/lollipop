@@ -1,0 +1,86 @@
+About Lollipop and its manual.
+
+You have obtained a package containing the Lollipop format 
+and its manual.
+
+The manual is a pretty good illustration of the power of
+Lollipop, but there is also a file 'address.tex' which
+contains example macros for an address book.
+
+Lollipop is still under development. The manual contains
+some remarks about what is still to be done. If you have any
+questions, remarks, suggestions (or if you want to voice
+your appreciation :-) , feel free to contact me:
+
+ Vafa Khalighi
+ persian-tex@tug.org
+
+Here is how much of TeX's memory you used:
+ 1194 strings out of 496579
+ 16173 string characters out of 6202690
+ 72655 words of memory out of 5000000
+ 3270 multiletter control sequences out of 15000+600000
+ 11241 words of font info for 40 fonts, out of 8000000 for 9000
+ 19 hyphenation exceptions out of 8191
+ 24i,4n,24p,187b,562s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on lollipop-manual.dvi (59 pages, 155468 bytes).
+
+History so far:
+
+0.9  October 1992, first public release
+
+0.91 Unannounced update
+     TeX3 based lollipop-plain
+     penalties and white space in embedded constructs
+     splittopskip set equal to topskip
+     
+0.92 November 1992, update for friends and family
+     Copyright notices added
+     math family setting for \rm, \bf, \tt
+     bugs in penalties corrected
+     
+0.93 December 1992, official update
+     Lots of nobreaks in pre/post-tex material of constructs
+     Synonym counters repaired
+     Topskip and raggedbottom in state of repair
+     
+0.94 December 1992, unofficial update
+     Adaptive distances
+     
+0.95 January 1993, unofficial update
+     Short titles, rewritten external files,
+     address book example format.
+     
+0.97 4 April 2014, organized and updated
+        files and also generated format.
+        
+0.98 6 April 2014, changed all lollipop filenames
+           to start with `lollipop' prefix, and fixed typewriter font.
+           
+0.99 9 April 2014, improved ini file, and the error in 
+           address.tex example fixed.
+        
+1.00 11 April 2014, updated lollipop-plain.tex and manual.
+
+1.01 12 April 2014, Updated lollipop-text.tex (changed "#1 cs to \"#1 cs 
+            to be compatible with plain
+           
+1.02 16 April 2014, Updated lollipop-text.tex (defined \EveryParagraph,
+             \EveryMath, and \EveryDisplay), defined \PointSizeScriptSizes:12
+          
+1.03 19 April 2014, Fixed the wrong numbering of nested enumerate lists
+
+1.05 16 April 2016, Changed \lolli@name to \lollipop@name
+         added \footnoterule to output routine
+         defined \PushLeftIndentLevel, \PopLeftIndentLevel, 
+         \PushRightIndentLevel, \PopRightIndentLevel, 
+         \PushLeftRightIndentLevels, and \PopLeftRightIndentLevels
+         commands. \PushIndentLevel is now a synonym for
+         \PushLeftIndentLevel and \PopIndentLevel is a synonym
+         for \PopLeftIndentLevel
+         fixed the error caused by \newhelp
+
+1.06 14 May 2016, Defined \FrenchSpacing
+
+1.07 21 May 2016, Some minor changes

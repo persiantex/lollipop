@@ -1,0 +1,85 @@
+% titlepag.tex copyright 1992 Victor Eijkhout
+%                     copyright 2014--2016 Vafa Khalighi
+%
+%
+%    This program is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+%
+\EmptyPage
+\begingroup\AlwaysIndent:no
+\PointSize:25 \Style:bold  Lollipop Unwrapped
+
+{\tt https://github.com/persian-tex/lollipop}
+
+\white:30pt
+
+\PointSize:20 \SetFont Victor Eijkhout {\rm(Original author)}
+
+\white:10pt
+
+Vafa Khalighi    {\rm(Current developer)}
+
+\white:50pt
+
+\PointSize:15 \Style:roman
+A manual for the Lollipop \TeX\ format\par
+Version 1.07\par
+Last updated 21 May 2016\par
+Pages: \LastInPageCounter+\LastRegPageCounter
+% so far we could have done this with labels, however
+\AddToCounter:LastRegPage=LastInPageValue
+=\LastRegPageCounter.
+
+\EjectPage
+\endgroup
+
+\Chapter Contents
+
+\Section Regular sections
+
+\LoadExternalFile:contents
+
+%\Section Implementer's notes
+
+%\LoadExternalFile:impnotes
+
+\Section All of the options
+
+(You know, this section and the next look much better if you sort the
+\file{manual.oix} and \file{manual.cix} files before you format the
+document the last time. Do put lines
+ \Ver>\Writeopindex:no
+\Writecsindex:no<Rev somewhere in
+the top of the \file{manual.tex} file in order to prevent 
+overwriting of these files
+after you've sorted them.)
+
+\Indent:no \rightskip=0pt plus 5cm
+\LoadExternalFile:optindex
+
+\Section All of the commands
+
+\Indent:no
+\LoadExternalFile:csindex
+
+\Section Bibliography
+
+\bibliographystyle{plain}
+\bibliography{lollipop-manual}
+
+\endinput
+
+% 2016/04/09 Updated the manual
+% 92/11/19 Page total included
+% 92/11/26 Bibliography
